@@ -10,36 +10,42 @@
 ## Тест случаи според критериумот Every statement
 За Every Statement, минималниот број на тест случаи е: 4 тест случаи
 
-Тест Случај 1: allItems == null
-Цел: Да се покрие линијата која фрла RuntimeException на самиот почеток.
-Влез: allItems = null, cardNumber = "1234567890123456"
-Очекувано: RuntimeException со порака "allItems list can't be null!"
-Покрива: линиите A, B
+## Тест Случаи
 
-Тест Случај 2: Valid item без попуст
-Цел: Да се покрие нормалната патека кога се додава цена без попуст.
-Влез:
-Item{name="Milk", price=100, quantity=2, discount=0.0}
-cardNumber = "1234567890123456"
-Очекувано: Резултат = 100 * 2 = 200
-Покрива: линии C, D (false), F (false), H (false), J, K, L (for), M (false)
+### Тест Случај 1: `allItems == null`
 
-Тест Случај 3: Item со цена > 300 и со попуст
-Цел: Да се покрие гранката каде се одзема -30 и се пресметува попуст.
-Влез:
-Item{name="TV", price=400, quantity=1, discount=0.25}
-cardNumber = "1234567890123456"
-Очекувано:
-sum = -30 + 400 * 0.75 = 270
-Покрива: F (true), G, H (true), I
+- **Цел:** Да се покрие линијата која фрла `RuntimeException` на самиот почеток.  
+- **Влез:** `allItems = null`, `cardNumber = "1234567890123456"`  
+- **Очекувано:** `RuntimeException` со порака `"allItems list can't be null!"`  
+- **Покрива:** линии A, B  
 
-Тест Случај 4: Невалиден карактер во картичка
-Цел: Да се покрие RuntimeException за недозволен карактер.
-Влез:
-Item{name="Bread", price=50, quantity=1, discount=0}
-cardNumber = "12345678901234AB"
-Очекувано: RuntimeException: Invalid character in card number!
-Покрива: M (true), N
+---
+
+### Тест Случај 2: Valid item без попуст
+
+- **Цел:** Да се покрие нормалната патека кога се додава цена без попуст.  
+- **Влез:** `Item{name="Milk", price=100, quantity=2, discount=0.0}`, `cardNumber = "1234567890123456"`  
+- **Очекувано:** Резултат = 100 * 2 = 200  
+- **Покрива:** линии C, D (false), F (false), H (false), J, K, L (for), M (false)  
+
+---
+
+### Тест Случај 3: Item со цена > 300 и со попуст
+
+- **Цел:** Да се покрие гранката каде се одзема -30 и се пресметува попуст.  
+- **Влез:** `Item{name="TV", price=400, quantity=1, discount=0.25}`, `cardNumber = "1234567890123456"`  
+- **Очекувано:** sum = -30 + 400 * 0.75 = 270  
+- **Покрива:** F (true), G, H (true), I  
+
+---
+
+### Тест Случај 4: Невалиден карактер во картичка
+
+- **Цел:** Да се покрие `RuntimeException` за недозволен карактер.  
+- **Влез:** `Item{name="Bread", price=50, quantity=1, discount=0}`, `cardNumber = "12345678901234AB"`  
+- **Очекувано:** `RuntimeException`: Invalid character in card number!  
+- **Покрива:** M (true), N  
+
 
 Влезните test cases се земени како пример во тестовите.
 
