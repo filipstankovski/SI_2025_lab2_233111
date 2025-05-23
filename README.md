@@ -11,40 +11,59 @@
 За Every Statement, минималниот број на тест случаи е: 4 тест случаи
 
 
-### Тест Случај 1: `allItems == null`
+### Тест Случај 1: testNullItemList
 
-- **Цел:** Да се покрие линијата која фрла `RuntimeException` на самиот почеток.  
-- **Влез:** `allItems = null`, `cardNumber = "1234567890123456"`  
-- **Очекувано:** `RuntimeException` со порака `"allItems list can't be null!"`  
-- **Покрива:** линии A, B  
+Опис: Тестира дали методот фрла исклучок кога allItems е null.
+Цел: Покривање на проверката за празна листа.
+Влез: allItems = null, cardNumber = "0123456789123456"
+Очекувано: RuntimeException со порака "allItems list can't be null!
 
----
-
-### Тест Случај 2: Valid item без попуст
-
-- **Цел:** Да се покрие нормалната патека кога се додава цена без попуст.  
-- **Влез:** `Item{name="Milk", price=100, quantity=2, discount=0.0}`, `cardNumber = "1234567890123456"`  
-- **Очекувано:** Резултат = 100 * 2 = 200  
-- **Покрива:** линии C, D (false), F (false), H (false), J, K, L (for), M (false)  
+Покрива statements: A, B
 
 ---
 
-### Тест Случај 3: Item со цена > 300 и со попуст
+### Тест Случај 2: testItemWithNullName
 
-- **Цел:** Да се покрие гранката каде се одзема -30 и се пресметува попуст.  
-- **Влез:** `Item{name="TV", price=400, quantity=1, discount=0.25}`, `cardNumber = "1234567890123456"`  
-- **Очекувано:** sum = -30 + 400 * 0.75 = 270  
-- **Покрива:** F (true), G, H (true), I  
+Опис: Проверува дали методот ќе фрли исклучок кога некој артикл има null име.
+Цел: Валидација на името на артиклите.
+Влез: Item{name=null, quantity=1, price=100, discount=0}, cardNumber = "0123456789123456"
+Очекувано: RuntimeException со порака "Invalid item!"
+
+Покрива statements: C, D (true), E  
 
 ---
 
-### Тест Случај 4: Невалиден карактер во картичка
+### Тест Случај 3: testInvalidCardCharacter
 
-- **Цел:** Да се покрие `RuntimeException` за недозволен карактер.  
-- **Влез:** `Item{name="Bread", price=50, quantity=1, discount=0}`, `cardNumber = "12345678901234AB"`  
-- **Очекувано:** `RuntimeException`: Invalid character in card number!  
-- **Покрива:** M (true), N  
+Опис: Проверува дали методот ќе фрли исклучок ако бројот на картичка содржи недозволен карактер.
+Цел: Проверка на валидација на број на картичка.
+Влез: Item{name="abc", quantity=3, price=299, discount=0}, cardNumber = "0123456789aaa456"
+Очекувано: RuntimeException со порака "Invalid character in card number!"
 
+Покрива statements: C, D (false), F (false), H (false), J, K, L, M (true), N
+
+---
+
+### Тест Случај 4: testNullCardNumber
+
+Опис: Проверка за null број на картичка.
+Цел: Покривање на блокот else за невалиден број.
+Влез: Item{name="abc", quantity=3, price=299, discount=0}, cardNumber = null
+Очекувано: RuntimeException со порака "Invalid card number!"
+
+Покрива statements: C, D (false), F (false), H (false), J, K (false), O
+
+---
+
+### Тест Случај 5: testItemWithDiscountAndPriceAboveThreshold
+
+Опис: Тестира пресметка со попуст и цена над 300.
+Цел: Покривање на попуст, одземање -30 и аритметика со попуст.
+Влез: Item{name="abc", quantity=3, price=301, discount=0.1}, cardNumber = "0123456789123456"
+Очекувано: sum = -30 + (301 * 0.9 * 3) = 813.7
+Покрива statements: C, D (false), F (true), G, H (true), I, K, L, M (false)
+
+---
 
 Влезните test cases се земени како пример во тестовите.
 
