@@ -28,7 +28,10 @@ public class SILab2Test {
 
         assertEquals(expected, actual);
     }
-    //    @Test
+
+   //ostanatite testovi od every statement metoda
+   
+//    @Test
 //    void testNullItemList() {
 //        RuntimeException ex = assertThrows(RuntimeException.class, () -> {
 //            SILab2.checkCart(null, "0123456789123456");
